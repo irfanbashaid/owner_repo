@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HIGH-LOW</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+ <script src="app.js"></script>
+  <style>
+   
+.navbar-default  {
+    color: #FFFFFF;
+    background-color: blue;
+    height: 100%; 
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 3px;
+  width: auto;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 2s5px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+table{
+    border-collapse: collapse;
+    border: 10px solid white;
+    background-color: white;
+    width: 100%;
+    height: 100%; 
+   
+}
+
+div#description {
+        background-color: gray;
+        height: 25%;
+        border: 2px black;
+    }
+    tr {
+        line-height: 55px;
+    }
+    .container {
+        height: 100%
+    }
+    
+    #topics tr {
+        line-height: 24px;
+    }
+    button {
+  background: rgb(18, 149, 229);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px 10px;
+ 
+  cursor: pointer;
+  opacity: 0.9;
+  border:none;
+ 
+   }
+   button1 {
+  background: rgb(240, 240, 240);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+  color: white;
+  padding: 10px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px 10px;
+ 
+  cursor: pointer;
+  opacity: 0.9;
+  border:none;
+ 
+   }
+  button:hover {
+    opacity:1;
+}
+/*th,h6
+{
+  color: LightSlateGray;
+}*/
+output,a
+{
+  color: white;
+}
+a
+{
+  color: black;
+}
+input{
+   text-align:center;
+}
+.ui-datepicker { font-size:9pt !important}
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;}
+.mytxt{
+  background-color: transparent;
+  color: black;
+  outline: none;
+  outline-style: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid black 1px;
+  padding: 3px 10px;
+  width:160px;
+}
+
+.header th {
+       height: 2px;
+       line-height: 2px;
+       width:1px;
+    }
+    .btn {
+    border: none;
+    outline: none;
+    padding: 0px 0px;
+    background-color:rgb(18, 149, 229);
+    cursor: pointer;
+    font-size: 18px;
+}
+.btn1{
+    border: none;
+    outline: none;
+    padding: 0px 0px;
+    background-color:rgb(240, 240, 240);
+    color: black;
+
+    cursor: pointer;
+    font-size: 18px;
+}
+.navbar-default .navbar-nav > .active > a, 
+  .navbar-default .navbar-nav > .active > a:hover, 
+  .navbar-default .navbar-nav > .active > a:focus {
+          color: white;
+    background: rgb(18, 149, 229);
+   }
+   .blue {
+    background:blue ;
+}
+
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% { 
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
+  } 50% { 
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
+  } 100% { 
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+  </style>
+ 
+  
+</head>
+<body style="background-color:rgb(240, 240, 240);" onload="App.user()" >
+  <nav class="navbar navbar-default" style="background:white";>
+    
+      
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" ><img src="high_low1.jpg" alt="Dispute Bills"></a>
+      </div>
+      <ul class="nav navbar-nav" >
+        <li  id="us" class="active"><a href="#" onclick="App.user1()">User</a></li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <li  id="brk"><a href="#" onclick="App.broker()">Broker</a></li>
+      </ul>
+    </div>
+  </nav>
+              &nbsp;
+             
+  <div id="user_page" >
+     
+      <div class="container" style="background:white;height:120px;width:1200px;">
+          <nav class=" navbar container" ><br>
+           <div  >
+                   &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                   <label for="account"><h4>Eth Balance:</h4><input type="text" class="form-control" id="balance" readonly/></label> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                   <label for="account1"><h4>Token Balance:</h4><input type="text" class="form-control" id="usertoken" readonly/></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <Button type="button"  id="load" data-loading-text=" loading..."  value="Create Bet" data-toggle="modal"  data-target="#purchase" style="padding: 8px 30px" >Purchase Token</Button>
+                   <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#selltoken" style="padding: 8px 20px" >Convert Token to Eth</Button>
+                   <p id="loader" class="spinner" style="display:none;"></p>
+                  </div>   
+</nav>
+</div>
+&nbsp;&nbsp;&nbsp;&nbsp;
+               <!--unbeted table-->
+               <div class="container" style="height:400px;width:1230px;">
+                  <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+                   <thead>
+                     <tr style="background:white">
+                       <th>Bet Id</th>
+                       <th>Details</th>
+                       <th>Team</th>
+                       <th>Start Time/Date</th>
+                       <th>End Time/Date</th>
+                       <th>Win</th><!--&#9660; &#9650;-->
+                       <th>Loss</th>
+                       <th> </th>
+                       <th> </th>
+                       <th> </th>
+                     </tr>
+                   </thead>
+                   <tbody id="user_table">
+                       <tr>
+                     
+                     </tr>
+                   </tbody>
+                 </table>
+               </div>
+ <br>
+ <!--Betted table-->
+ <div class="container" style="height:500px;width:1230px;">
+    <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+     <thead>
+       <tr style="background:white">
+         <th>Bet Id</th>
+         <th>Details</th>
+         <th>Team</th>
+         <th>Start Time/Date</th>
+         <th>End Time/Date</th>
+         <th>Win</th><!--&#9660; &#9650;-->
+         <th>Loss </th>
+         <th> </th>
+         <th> </th>
+         <th> </th>
+       </tr>
+     </thead>
+     <tbody id="totalbroker_list">
+         <tr>
+       
+       </tr>
+     </tbody>
+   </table>
+ </div>
+
+                <!--popup-->
+                <div class="container">
+                  <!-- <h2>Small Modal</h2>-->
+                   <!-- Trigger the modal with a button -->
+                   <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#sriram">Open Small Modal</button>-->
+                 
+                   <!-- Modal -->
+                  
+                  <!--purchase popup--> 
+                  <div class="modal fade" id="purchase" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Purchase</h4>         
+                          </div>
+                          
+                          <div class="modal-body">
+                              <input type="text" placeholder="Enter Number of Tokens " id='num'>
+                          </div>
+                         
+                          <div class="modal-footer">
+                            <button type="button"class="butn" data-dismiss="modal" aria-hidden="true" onclick="App.buy_token();" style="background:#03A9F4" >Purchase</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+               
+                     <!--sell token popup--> 
+                     <div class="modal fade" id="selltoken" role="dialog">
+                        <div class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Sell Token</h4>         
+                            </div>
+                            
+                            <div class="modal-body">
+                                <input type="text" placeholder="Enter Number of Tokens" id='selltk'>
+                            </div>
+                           
+                            <div class="modal-footer">
+                              <button type="button" class="butn" data-dismiss="modal" aria-hidden="true" onclick="App.exchange_token();" style="background:#03A9F4" >Sell Token</button>
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+               
+               <!--bet popup--> 
+               <div class="modal fade" id="bet" role="dialog">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Bet</h4>         
+                      </div>
+                      
+                      <div class="modal-body">
+                          <label class="radio-inline">
+                              <input type="radio" value ="1" name="optradio">Win
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" value="0" name="optradio">Loss
+                              </label><br><br><br>
+                              <input type="text" id="incbet" placeholder="Enter Number of Tokens">
+                   
+                      </div>
+                     
+                      <div class="modal-footer">
+                        <button type="button"class="butn" data-dismiss="modal" aria-hidden="true" onclick="App.betting();" style="background:#03A9F4" >Bet</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      
+      
+              </div>
+               
+              <div class="container">
+                  <!--incbet popup--> 
+                  <div class="modal fade" id="increasebet" role="dialog">
+                    <div class="modal-dialog modal-sm">
+                      <div class="modal-content">
+                        
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Increase bet</h4>         
+                        </div>
+                        
+                        <div class="modal-body">
+                           <input type="text" id="inccbet" value="" readonly>   
+                           <input type="text" id="onlynum" placeholder="number">
+                        </div>
+                       
+                        <div class="modal-footer">
+                          <button type="button" class="butn" data-dismiss="modal" aria-hidden="true" onclick="App.better_increase_bet_tokens();" style="background:#03A9F4" >increase bet</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+               
+                             <!--Exit popup--> 
+                             <div class="modal fade" id="exitbet" role="dialog">
+                                <div class="modal-dialog modal-sm">
+                                  <div class="modal-content">
+                                    
+                                    <div class="modal-header">
+                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      <h4 class="modal-title">Confirm Exit!</h4>         
+                                    </div>
+                                    
+                                    <!--<div class="modal-body">
+                                       <input type="text" placeholder="previous bet" readonly>   
+                                     <input type="text" placeholder="number only" id='num'>
+                                    </div>-->
+                                   
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn dnager" data-dismiss="modal" aria-hidden="true" onclick="App.better_exit_bet();">Exit</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+               
+               
+               
+               
+                     </div>
+</div>
+&nbsp;
+<div id="broker_page" >
+       <div class="container" style="background:white;height:120px;width:1200px;">
+       <nav class=" navbar container" ><br>
+        <div>
+                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                <label for="account"><h4>Eth Balance:</h4><input type="text" class="form-control" id="balance1" readonly/></label> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                <label for="account1"><h4>Token Balance:</h4><input type="text" class="form-control" id="brokertoken" readonly/></label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <Button type="button"  value="Create Bet" data-toggle="modal" data-target="#myModal" style="padding: 8px 50px" >Create Bet</Button>
+                <p id="betcreateloader" class="spinner" style="display:none"></p>
+                
+              </div>   
+      </nav>
+    </div>  
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    
+          <div class="container" style="height:700px;width:1230px;">
+            <table class="table" style="background:white;overflow-y:scroll;display:block;" >
+             <thead >
+               <tr style="background:white">
+                 <th>Bet Id</th>
+                 <th>Details</th>
+                 <th>Team</th>
+                 <th>Start Time/Date</th>
+                 <th>End Time/Date</th>
+                 <th>Win</th><!--&#9660; &#9650;-->
+                 <th>Loss</th>
+                 <th> </th>
+                 <th> </th>
+                 <th> </th>
+               </tr>
+             </thead>
+             <tbody id="broker_list">
+                 <tr>
+               
+               </tr>
+             </tbody>
+           </table>
+         </div>
+          <div class="container">
+                <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">      
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Create Betting</h4>
+                      </div>
+                      <form class="modal-content" oninput="x.value=a.value,y.value=b.value">
+                      <div class="modal-body">
+                            <table>
+                                    <thead>
+                                      <tr>
+                                       <td><input type="text"  id="a" placeholder="Team A" name="" required></td>
+                                       <td><center>&nbsp;&nbsp;&nbsp;&nbsp;<p>VS</p>&nbsp;&nbsp;&nbsp;&nbsp;</center></td>
+                                        <td><input type="text" id="b" placeholder="Team B" name="" required></td>
+                                      </tr>
+                                      </thead> 
+                                    </table>
+                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" class="button" id="button1"  value=""  onclick="App.myFunction(this);"><output name="x" for="a">Team A</output></button>
+                                        
+                                        <button type="button" class="button" id="button2"  value="true"  onclick="App.myFunction1(this);"><output name="y" for="b">Team B</output></button>
+                                   
+                                    <center>
+                                            <label for="account">Start Time:<input type="text" name="daterange"class="form-control" id="edate" value=""readonly/></label>
+                                            <label for="account">End Time:<input type="text" name="daterange1" class="form-control" id="edate1" readonly/></label>
+                                        </center>
+                      </div>
+                      <div class="modal-footer">
+                          <center>
+                        <button type="button" data-dismiss="modal" aria-hidden="true" onclick="App.create_bet();">Create Bet</button>
+                        <button type="button" style="background-color:hsl(0, 80%, 50%)" class="cancelbtn" data-dismiss="modal">Close</button>
+                    </center>
+                       </div>
+                    </form>
+                    </div>
+                    
+                  </div>
+                </div>
+                
+              </div>
+                  <div class="container">
+                    <div class="modal fade" id="myModal1" role="dialog">
+                            <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">      
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Stop Bet</h4>
+                          </div>
+                         
+                          <div class="modal-body">
+                              <center>
+                               <h3>Are You Sure To Stop Bet</h3>
+                        </center>      
+                          </div>
+                          <div class="modal-footer">
+                              <center>
+                            <button type="button" data-dismiss="modal" aria-hidden="true" onclick="App.stopbet();" >Stop Bet</button>
+                            <button type="button"  style="background-color:hsl(0, 80%, 50%)"  data-dismiss="modal">Close</button>
+                        </center>
+                           </div>
+                     
+                        </div>
+                        
+                      </div>
+                    </div>
+                    
+                  </div>
+                 
+                    <div class="modal fade out" id="myModal3" role="dialog" display="block">
+                            <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">      
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Broker</h4>
+                          </div>
+                         
+                          <div class="modal-body">
+                              <center>
+                               <h3>Do you Want To Act As Broker</h3>
+                        </center>      
+                          </div>
+                          <div class="modal-footer">
+                              <center>
+                            <button type="button" data-dismiss="modal" aria-hidden="true" onclick="App.addbroker();" >Join Now</button>
+                            <button type="button"  style="background-color:hsl(0, 80%, 50%)"  data-dismiss="modal">Close</button>
+                        </center>
+                           </div>
+                     
+                        </div>
+                        
+                      </div>
+                    </div>
+                    
+                
+                  <div class="container">
+                        
+                        <!-- Trigger the modal with a button -->
+                        
+                      
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal2" role="dialog">
+                          <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Declare Bet</h4>
+                              </div>
+                              <div class="modal-body">
+                                    <form action="">
+                                  
+                                    <input type="radio" name="gender" value="11"> Win<br>
+                                    <input type="radio" name="gender" value="10"> Loss<br>
+                                    <input type="radio" name="gender" value="12"> Draw
+                               
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                    <center>
+                                    <button type="button" data-dismiss="modal" aria-hidden="true" onclick="App.declarebet();" >submit</button>
+                                <button type="button"  style="background-color:hsl(0, 80%, 50%)" data-dismiss="modal">Close</button>
+                                </center>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+              </div>
+                    
+ </div>                      
+ <div class="container">
+  <div class="modal fade" id="regbrk" role="dialog">
+    <div class="modal-dialog modal-sm">                
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <center><h4 class="modal-title">Do you want to join as a broker?</h4></center>
+        </div>
+        <div class="modal-footer">
+            <center><button type="button" data-dismiss="modal" onclick="App.addbroker();">Yes</button>
+          <button type="button" style="background-color:hsl(0, 80%, 50%)" data-dismiss="modal" onclick="App.user();">Cancel</button></center>
+        </div>
+     
+      
+    </div>
+  </div>
+  
+</div>  
+
+
+ 
+
+
+            
+    <script>
+          // Get the modal
+          var modal = document.getElementById('id01');
+          
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+              }
+          }
+          
+$('input[name="daterange"]').daterangepicker({
+    "singleDatePicker": true,
+    "timePicker": true,
+    "timePickerSeconds": true,
+    "timePickerMinutes":true, 
+    locale: {
+      format: 'MM/DD/YYYY H:mm:ss'
+    }
+  });
+  $('input[name="daterange1"]').daterangepicker({
+    "singleDatePicker": true,
+    "timePicker": true,
+    "timePickerSeconds": true,
+    "timePickerMinutes":true, 
+    locale: {
+      format: 'MM/DD/YYYY H:mm:ss'
+    }
+  });
+
+   $('#num').keypress(function(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode == 8 || charCode == 37) {
+    return true;
+  } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+    return false;
+  } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+});
+
+
+$('#incbet').keypress(function(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode == 8 || charCode == 37) {
+    return true;
+  } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+    return false;
+  } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+});
+
+$('#onlynum').keypress(function(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode == 8 || charCode == 37) {
+    return true;
+  } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+    return false;
+  } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+});
+
+  $('#selltk').keypress(function(evt) {
+  evt = (evt) ? evt : window.event;
+  var charCode = (evt.which) ? evt.which : evt.keyCode;
+  if (charCode == 8 || charCode == 37) {
+    return true;
+  } else if (charCode == 46 && $(this).val().indexOf('.') != -1) {
+    return false;
+  } else if (charCode > 31 && charCode != 46 && (charCode < 48 || charCode > 57)) {
+    return false;
+  }
+  return true;
+});
+ 
+
+// $('#load').on('click', function() {
+//     var $this = $(this);
+//   $this.button('loading');
+//     setTimeout(function() {
+//        $this.button('reset');
+//    },8000);
+// });
+
+</script>
+</body>
+</html>

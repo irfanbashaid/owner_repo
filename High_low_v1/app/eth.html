@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <script src="./app.js"></script>
+</head>
+<body onload="func()" bgcolor="white">
+<p><b>Ethereum Account:</b></p>
+<p id="ea"></p>
+<p><b>Account Balance:</b></p>
+<p id="accbal"></p>
+<script>
+
+ 
+function func()
+{
+    var account1 = web3.eth.accounts[0];
+            var accountInterval = setInterval(function() {
+              if (web3.eth.accounts[0] !== account1) {
+                account1 = web3.eth.accounts[0];
+                document.getElementById("ea").innerHTML = account1;
+              }
+            }, 100);
+            document.getElementById("accbal").innerText ="5000";
+}
+</script>
+
+</body>
+</html>

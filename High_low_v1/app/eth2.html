@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#divid{
+	margin-top:1.5px;
+	border:0;
+	margin-left:700px;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+</head>
+<body onload="myFunction()" bgcolor="white">
+<div id="divid" style="color:black">
+<table >
+<tr>
+<th>Wins</th>
+<th>lose</th>
+<th>Draw</th>
+</tr>
+<tr>
+<td id="win"></td>
+<td id="los"></td>
+<td id="dra"></td></tr>
+</table>
+</div>
+
+
+<script>
+function myFunction() {
+ document.getElementById("win").innerText="5"
+ document.getElementById("los").innerText="5"
+ document.getElementById("dra").innerText="2"
+}
+</script>
+
+</body>
+</html>

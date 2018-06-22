@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>button</title>
+<style>   
+
+      .circular-image {
+  border-radius:10%;
+  margin-top:100px;
+  width:100px;
+  position:center;
+  margin-left:70px;
+   }
+
+    .a{
+	margin-top:200px;
+	width:350px;
+	border:0;
+	margin-left:40px;
+    position: center;
+    }
+
+    .b{
+	margin-top:150px;
+	width:350px;
+	border:0;
+	margin-left:40px;
+    position:center;
+    }
+   
+
+
+    input[type=submit] {
+	width: 40%;
+    height: 50;
+    	background-color: #4CAF50;
+    	color: white;
+}
+
+
+
+</style>    
+</head>
+    <body background="trading.jpg">
+        
+                <img src="loin.jpg" alt="my-image" class="circular-image" />
+                <div class="a"> 
+            <form>
+                  
+                <input type="submit" name="Submit" value="BROKER" onclick="button1()">
+                    
+                    
+            </form>
+        </div>
+        <div class="b">
+            <form>
+                    <input type="submit" name="Submit" value="TRADER" onclick="button2()">
+            </form>
+
+        </div>
+        
+                <script>
+         function button1(){
+              window.open("/app/frame1.html");
+         }
+         function button2(){
+            window.open("/app/frame2.html");
+         }
+        </script>
+             </body>
+</html>
+
