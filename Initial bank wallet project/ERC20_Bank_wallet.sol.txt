@@ -1,0 +1,68 @@
+pragma solidity ^0.4.0;
+library Safemath
+{
+    function add(uint256 x,uint256 y) internal pure returns (uint256) 
+    {
+        uint256 z=x+y;
+        require(z>=x);
+        return z;
+    }
+    function sub(uint256 x,uint256 y) internal pure returns (uint256)
+    {
+        require(y<=x);
+        return x-y;
+    }
+}
+contract ERC20_Bank_wallet 
+{
+    using Safemath for uint256;
+    event Approval(address owner, address spender,uint256 amount);
+    event Transfer(address from, address to, uint256 amount);
+    mapping(address=>uint)acc;
+    mapping(address=>mapping(address=>uint))spender_map;
+    modifier check_owner_bal(uint256 _amount)
+    {
+        require(acc[msg.sender]>_amount && _amount>0);
+        _;
+    }
+    modifier check_spender_bal(address _spender,uint256 _amount)
+    {
+        require(spender_map[msg.sender][_spender]>_amount && _amount>0);
+        _;
+    }
+    function totalSupply(uint256 amount) returns (uint256)
+    {
+        require(amount>0);
+        acc[msg.sender]=acc[msg.sender].add(amount);
+        return acc[msg.sender];
+    }
+    function balanceOf(address acc_holder) public constant returns (uint256) 
+    {
+        return acc[acc_holder];
+    }
+    function transfer(address transfer_to, uint256 amount) check_owner_bal(amount) returns (bool) 
+    {
+        acc[transfer_to]=acc[transfer_to].add(amount);
+        acc[msg.sender]=acc[msg.sender].sub(amount);
+        Transfer(msg.sender,transfer_to,amount); 
+        return true;
+    }
+    function approve(address spender, uint256 amount) check_owner_bal(amount) returns (bool)
+    {
+        spender_map[msg.sender][spender]=amount;
+        Approval(msg.sender,spender,amount);
+        return true;
+    }
+    function transferFrom(address spender, address transfer_to, uint256 amount) check_spender_bal(spender,amount) returns (bool) 
+    {
+        acc[transfer_to]=acc[transfer_to].add(amount);
+        spender_map[msg.sender][spender]=spender_map[msg.sender][spender].sub(amount);
+        acc[msg.sender]=acc[msg.sender].sub(amount);
+        Transfer(spender,transfer_to,amount);
+        return true;
+    }
+    function allowance(address spender) public constant returns (uint256) 
+    {
+        return spender_map[msg.sender][spender];
+    }
+}

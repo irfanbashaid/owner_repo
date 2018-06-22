@@ -1,0 +1,34 @@
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Client Data
+  body
+    h1 Please fill data in the form below:
+    form(method='POST', action='/register')
+      label
+        | FirstName:
+        input(type='text', name='Firstname')
+      br
+      label
+        | LastName:
+        input(type='text', name='Lastname')
+      br
+      label
+        | Username:
+        input(type='text', name='Username')
+      br
+      label
+        | Email:
+        input(type='text', name='Email')
+      br
+      label
+        | Password:
+        input(type='text', name='Password')
+      br
+      label
+        | Amount:
+        input(type='text', name='Amount')
+      br
+      input(type='submit', value='Submit')
